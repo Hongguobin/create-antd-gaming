@@ -1,24 +1,23 @@
 import React from 'react';
 import './index.less'
-import { recommendList } from '../../utils'
 import { Route } from 'react-router-dom'
+import Recommend from './recommend'
+import Rank from './rank'
+import Song from './song'
+import RadioStation from './radioStation'
+import Singer from './singer'
+import Disc from './disc'
 
 function Discover() {
     return (
         <div className="discover">
-            {
-                recommendList.map((item, index) => {
-                    return (
-                        <Route
-                            key={index}
-                            exact={item.exact}
-                            path={item.path}
-                            component={item.component}
-                        >
-                        </Route>
-                    )
-                })
-            }
+            <Route path='/discover/rank' component={Rank}></Route>
+            <Route path='/discover/song' component={Song}></Route>
+            <Route path='/discover/radioStation' component={RadioStation}></Route>
+            <Route path='/discover/singer' component={Singer}></Route>
+            <Route path='/discover/disc' component={Disc}></Route>
+            <Route path='/discover/recommend' component={Recommend}></Route>
+            <Route path="/" exact component={Recommend}></Route>
         </div>
     )
 }

@@ -14,7 +14,6 @@ const tabBox = [
     name: '发现音乐',
     path: '/',
     component: Discover,
-    exact: true
   },
   {
     name: '我的音乐',
@@ -49,20 +48,13 @@ function App() {
         <Header tabBox={tabBox}></Header>
         <div className="App__panel">
           <Switch>
-            {
-              tabBox.map((item, index) => {
-                return (
-                  <Route
-                    key={index}
-                    exact={item.exact}
-                    path={item.path}
-                    component={item.component}
-                  >
-                  </Route>
-                )
-              })
-            }
+            <Route path='/my' component={My}></Route>
+            <Route path='/friend' component={Friend}></Route>
+            <Route path='/mall' component={Mall}></Route>
+            <Route path='/nmusician' component={Nmusician}></Route>
+            <Route component={Discover}></Route>
             <Route path="*" exact component={Error}></Route>
+            <Route path="/" component={Discover}></Route>
           </Switch>
         </div>
       </div>

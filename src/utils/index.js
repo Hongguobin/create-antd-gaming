@@ -8,38 +8,32 @@ import Disc from '../page/discover/disc'
 export const recommendList = [
     {
         name: '推荐',
-        path: '/recommend',
-        exact: true,
+        path: '/discover/recommend',
         component: Recommend
     },
     {
         name: '排行榜',
-        path: '/rank',
-        exact: false,
+        path: '/discover/rank',
         component: Rank
     },
     {
         name: '歌单',
-        path: '/song',
-        exact: false,
+        path: '/discover/song',
         component: Song
     },
     {
         name: '主播电台',
-        path: '/radioStation',
-        exact: false,
+        path: '/discover/radioStation',
         component: RadioStation
     },
     {
         name: '歌手',
-        path: '/singer',
-        exact: false,
+        path: '/discover/singer',
         component: Singer
     },
     {
         name: '新碟上架',
-        path: '/disc',
-        exact: false,
+        path: '/discover/disc',
         component: Disc
     },
 ]
