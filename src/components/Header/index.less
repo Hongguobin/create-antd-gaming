@@ -1,0 +1,101 @@
+.header{
+  &__content{
+    width: 100%;
+      height: 70px;
+      box-sizing: border-box;
+      background: #242424;
+      .wrap{
+        width: 1100px;
+        height: 100%;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        background: #242424;
+        &__left{
+          height: 100%;
+          display: flex;
+          align-items: center;
+          .img{
+            width: 176px;
+            height: 69px;
+            margin-bottom: 0;
+            background-image: url(https://s2.music.126.net/style/web2/img/frame/topbar.png?66173fe…);
+            background-position: 0 0;
+          }
+          .tabBox{
+            height: 100%;
+            display: flex;
+            align-items: center;
+            cursor: pointer;
+            .item{
+              height: 70px;
+              display: flex;
+              align-items: center;
+              color: #ccc;
+              font-size: 14px;
+              padding-left: 19px;
+              padding-right: 19px;
+              position: relative;
+              transition: all 0.25s ease-in-out;
+            }
+            .activeItem{
+              background-color: #000;
+              color: #fff;
+              position: relative;
+              &::after{
+                content: '';
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 0;
+                width: 0;
+                height: 0;
+                border: 7px solid;
+                border-color: transparent transparent @primary-color;
+              }
+            }
+          }
+        }
+        &__right{
+          display: flex;
+          align-items: center;
+          .input{
+            .ant-input-affix-wrapper {
+              border-radius: 20px;
+            }
+          }
+          .creatorCenter{
+            cursor: pointer;
+            height: 32px;
+            line-height: 31px;
+            box-sizing: border-box;
+            margin-left: 16px;
+            padding: 0 13px;
+            border: 1px solid #4F4F4F;
+            color: #ccc;
+            background-position: 0 -140px;
+            border-radius: 20px;
+            &:hover {
+              color: #fff;
+              border: 1px solid #ccc;
+            }
+          }
+          .login{
+            color: #787878;
+            margin-left: 20px;
+            cursor: pointer;
+            &:hover{
+              color: #666;
+            }
+          }
+        }
+      }
+  }
+  &__line{
+    min-height: 6px;
+    box-sizing: border-box;
+    background-color: @primary-color;
+  }
+}
+

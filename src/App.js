@@ -1,39 +1,72 @@
-import logo from './logo.svg';
-import { Button } from 'antd'
 import './App.less';
-import React, { useReducer } from 'react'
-import dayjs from 'dayjs'
+import React from 'react'
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
+import Discover from './page/discover'
+import My from './page/my'
+import Friend from './page/friend'
+import Mall from './page/mall'
+import Nmusician from './page/nmusician'
+import Error from './page/error'
+import Header from './components/Header'
+
+const tabBox = [
+  {
+    name: '发现音乐',
+    path: '/',
+    component: Discover,
+    exact: true
+  },
+  {
+    name: '我的音乐',
+    path: '/my',
+    component: My,
+    exact: false
+  },
+  {
+    name: '朋友',
+    path: '/friend',
+    component: Friend,
+    exact: false
+  },
+  {
+    name: '商城',
+    path: '/mall',
+    component: Mall,
+    exact: false
+  },
+  {
+    name: '音乐人',
+    path: '/nmusician',
+    component: Nmusician,
+    exact: false
+  }
+]
 
 function App() {
-  const [count, dispatch] = useReducer((state, action) => {
-    switch (action) {
-      case 'add':
-        const time = dayjs(1614149318642).format('YYYY-MM')
-        console.log(time)
-        return state + 1
-      default:
-        return
-    }
-  }, 0)
-
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <Button type="primary" onClick={() => dispatch('add')}>click me</Button>
-        <p className="text">
-          {count} <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Header tabBox={tabBox}></Header>
+        <div className="App__panel">
+          <Switch>
+            {
+              tabBox.map((item, index) => {
+                return (
+                  <Route
+                    key={index}
+                    exact={item.exact}
+                    path={item.path}
+                    component={item.component}
+                  >
+                  </Route>
+                )
+              })
+            }
+            <Route path="*" exact component={Error}></Route>
+          </Switch>
+        </div>
+      </div>
+    </Router>
   );
 }
 
