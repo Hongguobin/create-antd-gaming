@@ -1,8 +1,25 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux'
+import { changeUserInfo, changeTabInfo } from '../../redux/actions'
+import { Button } from 'antd'
 
-function Friend() {
+const mapStateToProps = (state) => {
+    return {
+        userInfo: state.userInfo
+    }
+}
+
+function Friend(props) {
+    const { userInfo, dispatch, match } = props
+    useEffect(() => {
+        dispatch(changeTabInfo(match.path))
+    }, [])
     return (
-        <div>朋友</div>
+        <div>
+            <Button onClick={() => dispatch(changeUserInfo('token'))}>朋友</Button>
+            <div>{userInfo}</div>
+        </div>
+
     )
 }
-export default Friend
+export default connect(mapStateToProps)(Friend)

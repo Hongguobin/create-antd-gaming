@@ -1,6 +1,10 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-function My() {
+function My(props) {
+    // const { dispatch, match } = props
+    // useEffect(() => {
+    //     dispatch(match.path)
+    // }, [])
     return (
         <div>我的</div>
     )

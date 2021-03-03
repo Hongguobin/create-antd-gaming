@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import './index.less'
 import { Route } from 'react-router-dom'
 import Recommend from './recommend'
@@ -8,7 +8,11 @@ import RadioStation from './radioStation'
 import Singer from './singer'
 import Disc from './disc'
 
-function Discover() {
+function Discover(props) {
+    const { dispatch, match } = props
+    useEffect(() => {
+        dispatch(match.path)
+    }, [])
     return (
         <div className="discover">
             <Route path='/discover/rank' component={Rank}></Route>
