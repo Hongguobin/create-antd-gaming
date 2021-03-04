@@ -4,10 +4,19 @@ import { SearchOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
 import './index.less'
 import RecommendTab from '../../page/discover/tab'
+import { connect } from 'react-redux'
+
+
+const mapStateToProps = (state) => {
+    return {
+        userInfo: state.userInfo,
+        tabInfo: state.tabInfo
+    }
+}
 
 const Header = (props) => {
-    const { tabBox } = props
-    const [tabIndex, handleTab] = useState(0)
+    const { tabBox, tabInfo } = props
+    const [tabIndex, handleTab] = useState(tabInfo)
     return (
         <div className="header">
             <div className="header__content">
@@ -19,7 +28,7 @@ const Header = (props) => {
                                 tabBox.map((item, index) => {
                                     return (
                                         <Link key={index} to={item.path}>
-                                            <div className={`item ${index === tabIndex ? 'activeItem' : ''}`} onClick={() => handleTab(index)}>{item.name}</div>
+                                            <div className={`item ${tabInfo === item.path ? 'activeItem' : ''}`} onClick={() => handleTab(index)}>{item.name}</div>
                                         </Link>
                                     )
                                 })
@@ -45,4 +54,4 @@ const Header = (props) => {
     )
 }
 
-export default Header
+export default connect(mapStateToProps)(Header)

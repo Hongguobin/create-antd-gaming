@@ -7,12 +7,21 @@ import Song from './song'
 import RadioStation from './radioStation'
 import Singer from './singer'
 import Disc from './disc'
+import { connect } from 'react-redux'
+import { changeTabInfo } from '../../redux/actions'
+
+
+const mapStateToProps = (state) => {
+    return {
+        tabInfo: state.tabInfo
+    }
+}
 
 function Discover(props) {
     const { dispatch, match } = props
     useEffect(() => {
-        dispatch(match.path)
-    }, [])
+        dispatch(changeTabInfo(match.path))
+    })
     return (
         <div className="discover">
             <Route path='/discover/rank' component={Rank}></Route>
@@ -25,4 +34,4 @@ function Discover(props) {
         </div>
     )
 }
-export default Discover
+export default connect(mapStateToProps)(Discover)
