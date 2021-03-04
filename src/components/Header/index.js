@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import { Input } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
@@ -17,9 +17,6 @@ const mapStateToProps = (state) => {
 const Header = (props) => {
     const { tabBox, tabInfo } = props
     const [tabIndexPath, handleTab] = useState(tabInfo)
-    useEffect(() => {
-        console.log(tabIndexPath)
-    }, [tabIndexPath])
     return (
         <div className="header">
             <div className="header__content">
