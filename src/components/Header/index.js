@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Input } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
 import { Link } from 'react-router-dom'
@@ -16,7 +16,6 @@ const mapStateToProps = (state) => {
 
 const Header = (props) => {
     const { tabBox, tabInfo } = props
-    const [tabIndexPath, handleTab] = useState(tabInfo)
     return (
         <div className="header">
             <div className="header__content">
@@ -28,7 +27,7 @@ const Header = (props) => {
                                 tabBox.map((item, index) => {
                                     return (
                                         <Link key={index} to={item.path}>
-                                            <div className={`item ${tabInfo === item.path ? 'activeItem' : ''}`} onClick={() => handleTab(item.path)}>{item.name}</div>
+                                            <div className={`item ${tabInfo === item.path ? 'activeItem' : ''}`}>{item.name}</div>
                                         </Link>
                                     )
                                 })
@@ -48,7 +47,7 @@ const Header = (props) => {
                 </div>
             </div>
             <div className="header__line">
-                {tabIndexPath === '/' ? <RecommendTab></RecommendTab> : null}
+                {tabInfo === '/' && <RecommendTab></RecommendTab>}
             </div>
         </div>
     )

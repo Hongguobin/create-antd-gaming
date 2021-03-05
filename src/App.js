@@ -1,5 +1,5 @@
 import './App.less';
-import React, { useEffect } from 'react'
+import React from 'react'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import Discover from './page/discover'
 import My from './page/my'
@@ -9,12 +9,11 @@ import Nmusician from './page/nmusician'
 import Error from './page/error'
 import Header from './components/Header'
 import { connect } from 'react-redux'
-import { changeTabInfo } from './redux/actions'
 
 
 const mapStateToProps = (state) => {
   return {
-      tabInfo: state.tabInfo
+    tabInfo: state.tabInfo
   }
 }
 const tabBox = [
@@ -49,8 +48,11 @@ const tabBox = [
   }
 ]
 
-function App(props) {
-  console.log(props)
+function App() {
+  // const { tabInfo, dispatch } = props
+  // useEffect(() => {
+  //   dispatch(changeTabInfo(tabInfo))
+  // })
   return (
     <Router>
       <div className="App">
