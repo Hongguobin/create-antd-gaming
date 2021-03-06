@@ -1,21 +1,18 @@
 import React, { useEffect } from 'react';
-import { changeTabInfo } from '../../redux/actions'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 
 const mapStateToProps = (state) => {
     return {
-        tabInfo: state.tabInfo
     }
 }
 
-function Mall(props) {
-    const { dispatch, match } = props
+function Mall() {
     useEffect(() => {
-        dispatch(changeTabInfo(match.path))
     })
     return (
         <div>商城</div>
     )
 }
-export default connect(mapStateToProps)(Mall)
+export default connect(mapStateToProps)(withRouter(Mall))

@@ -1,8 +1,7 @@
-import { change_user_info, tab_info } from './actions'
+import { change_user_info } from './actions'
 
 let storeState = {
     userInfo: null,
-    tabInfo: null
 }
 
 export default function Store(state = storeState, actions) {
@@ -11,11 +10,6 @@ export default function Store(state = storeState, actions) {
             return {
                 ...state,
                 userInfo: actions.data
-            }
-        case tab_info:
-            return {
-                ...state,
-                tabInfo: actions.data
             }
         default:
             return state

@@ -1,20 +1,17 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux'
-import { changeTabInfo } from '../../redux/actions'
+import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = (state) => {
     return {
-        tabInfo: state.tabInfo
     }
 }
 
-function My(props) {
-    const { dispatch, match } = props
+function My() {
     useEffect(() => {
-        dispatch(changeTabInfo(match.path))
     })
     return (
         <div>我的</div>
     )
 }
-export default connect(mapStateToProps)(My)
+export default connect(mapStateToProps)(withRouter(My))

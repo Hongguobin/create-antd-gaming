@@ -1,20 +1,17 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux'
-import { changeUserInfo, changeTabInfo } from '../../redux/actions'
+import { changeUserInfo } from '../../redux/actions'
 import { Button } from 'antd'
+import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = (state) => {
     return {
         userInfo: state.userInfo,
-        tabInfo: state.tabInfo
     }
 }
 
 function Friend(props) {
-    const { userInfo, dispatch, match } = props
-    useEffect(() => {
-        dispatch(changeTabInfo(match.path))
-    })
+    const { userInfo, dispatch } = props
     return (
         <div>
             <Button onClick={() => dispatch(changeUserInfo('token'))}>朋友</Button>
@@ -23,4 +20,4 @@ function Friend(props) {
 
     )
 }
-export default connect(mapStateToProps)(Friend)
+export default connect(mapStateToProps)(withRouter(Friend))

@@ -1,20 +1,17 @@
 import React, { useEffect } from 'react';
-import { changeTabInfo } from '../../redux/actions'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = (state) => {
     return {
-        tabInfo: state.tabInfo
     }
 }
 
-function Nmusician(props) {
-    const { dispatch, match } = props
+function Nmusician() {
     useEffect(() => {
-        dispatch(changeTabInfo(match.path))
     })
     return (
         <div>音乐人</div>
     )
 }
-export default connect(mapStateToProps)(Nmusician)
+export default connect(mapStateToProps)(withRouter(Nmusician))
