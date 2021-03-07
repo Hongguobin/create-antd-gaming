@@ -1,17 +1,15 @@
 import { change_user_info } from './actions'
 
-let storeState = {
-    userInfo: null,
+// eslint-disable-next-line import/no-anonymous-default-export
+export default {
+    userInfo(state = null, action) {
+        const { type, data } = action;
+        switch (type) {
+            case change_user_info:
+                return data;
+            default:
+        }
+        return state;
+    },
 }
-
-export default function Store(state = storeState, actions) {
-    switch (actions.type) {
-        case change_user_info:
-            return {
-                ...state,
-                userInfo: actions.data
-            }
-        default:
-            return state
-    }
-}
+    
