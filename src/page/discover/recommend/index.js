@@ -2,11 +2,12 @@ import React, { useEffect } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import './index.less'
-import Swiper from 'swiper'
+// import Swiper from 'swiper'
 import 'swiper/swiper-bundle.css'
 import p1 from '../../../assets/images/p1.jpg'
 import p2 from '../../../assets/images/p2.jpg'
 import p3 from '../../../assets/images/p3.jpg'
+import { Swiper, SwiperSlide } from 'swiper/react';
 
 const mapStateToProps = () => {
   return {}
@@ -17,32 +18,37 @@ function Recommend() {
     instanceSwiper()
   }, [])
   const instanceSwiper = () => {
-    new Swiper ('.swiper-container', {
-        loop: true, // 循环模式选项
-      })
+    // new Swiper('.swiper-container', {
+    //   loop: true,
+    //   autoplay: {
+    //     delay: 3000
+    //   },
+    //   observer: true,
+    //   observeParents: true,
+    // })
   }
 
   return (
     <div className="reacommend">
-        <div className="swiper-container">
-            <div className="swiper-wrapper">
-                <div className="swiper-slide">
-                    <img src={p1} alt=""></img>
-                </div>
-                <div className="swiper-slide">
-                    <img src={p2} alt=""></img>
-                </div>
-                <div className="swiper-slide">
-                    <img src={p3} alt=""></img>
-                </div>
-            </div>
-            <div className="swiper-pagination"></div>
-
-            <div className="swiper-button-prev"></div>
-            <div className="swiper-button-next"></div>
-
-            <div className="swiper-scrollbar"></div>
-        </div>
+      <Swiper
+        spaceBetween={100}
+        slidesPerView={2}
+        initialSlide={1} // 初始化显示哪一个
+        loop={true} // 是否循环
+        onSlideChange={() => console.log('slide change')}
+        onSwiper={(swiper) => console.log(swiper)}
+        threshold={40}
+      >
+        <SwiperSlide>
+          <img src={p1} alt=""></img>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={p2} alt=""></img>
+        </SwiperSlide>
+        <SwiperSlide>
+          <img src={p3} alt=""></img>
+        </SwiperSlide>
+      </Swiper>
     </div>
   )
 }
