@@ -51,7 +51,7 @@ function App() {
         <Header tabBox={tabBox}></Header>
         <div className="App__panel">
           <Switch>
-            <Route path="/" exact render={()=> <Redirect to="/discover"></Redirect>}></Route>
+            <Route path="/" exact render={() => <Redirect to="/discover"></Redirect>}></Route>
             <Route path="/discover" component={Discover}></Route>
             <Route path='/my' component={My}></Route>
             <Route path='/friend' component={Friend}></Route>

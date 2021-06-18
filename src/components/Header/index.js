@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react'
 import { Input } from 'antd'
 import { SearchOutlined } from '@ant-design/icons'
-import { NavLink as Link, withRouter } from 'react-router-dom'
+import { NavLink as Link, withRouter, useLocation } from 'react-router-dom'
 import './index.less'
 import RecommendTab from '../../page/discover/tab'
 import { connect } from 'react-redux'
@@ -15,6 +15,10 @@ const mapStateToProps = state => {
 }
 
 const Header = props => {
+  let locationUse = useLocation()
+  useEffect(() => {
+    console.log(locationUse)
+  }, [locationUse])
   const { tabBox, location } = props
   const [visible, setVisible] = useState(false)
   const authRoutes = [
@@ -27,7 +31,7 @@ const Header = props => {
     '/discover/disc'
   ]
   useEffect(() => {
-    gainGirl().then(res => {})
+    gainGirl().then(res => { })
   }, [])
   return (
     <div className="header">
